@@ -51,174 +51,121 @@ Use cv2.imshow to show the image
 
 End the program
 ## Program:
+```
+Developed By: shaik lahir
+Register Number: 212224240148
+```
+##  i)Original Image:
 ```python
-Developed By:shaik lahir
-Register Number:212224240148
-
-i)Image Translation
-
-
+# To show the original image and to find the shape of the image
 import cv2
 import numpy as np
-import matplotlib.pyplot as plt
-input_image=cv2.imread("dip.jpg")
-input_image=cv2.cvtColor(input_image,cv2.COLOR_BGR2RGB)
-plt.axis('off')
-print("Input Image:")
-plt.imshow(input_image)
-plt.show()
-rows,cols,dim=input_image.shape
-M=np.float32([[1,0,100],[0,1,200],[0,0,1]])
-translated_image=cv2.warpPerspective(input_image,M,(cols,rows))
-plt.axis('off')
-print("Image Translation:")
-plt.imshow(translated_image)
-plt.show()
-
-
-ii) Image Scaling
-
-import cv2
-import numpy as np
-import matplotlib.pyplot as plt
-input_image=cv2.imread('dip.jpg')
-input_image=cv2.cvtColor(input_image,cv2.COLOR_BGR2RGB)
-plt.axis('off')
-print("Input Image:")
-plt.imshow(input_image)
-plt.show()
-rows,cols,dim=input_image.shape
-M=np.float32([[1.5,0,0],[0,1.8,0],[0,0,1]])
-translated_image=cv2.warpPerspective(input_image,M,(cols*2,rows*2))
-plt.axis('off')
-print("Image Scaling:")
-plt.imshow(translated_image)
-plt.show()
-
-iii)Image shearing
-
-import cv2
-import numpy as np
-import matplotlib.pyplot as plt
-input_image=cv2.imread('dip.jpg')
-input_image=cv2.cvtColor(input_image,cv2.COLOR_BGR2RGB)
-plt.axis('off')
-print("Input Image:")
-plt.imshow(input_image)
-plt.show()
-rows,cols,dim=input_image.shape
-M1=np.float32([[1,0.5,0],[0,1,0],[0,0,1]])
-M2=np.float32([[1,0,0],[0.5,1,0],[0,0,1]])
-translated_image1=cv2.warpPerspective(input_image,M1,(int(cols*1.5),int(rows*1.5)))
-translated_image2=cv2.warpPerspective(input_image,M2,(int(cols*1.5),int(rows*1.5)))
-plt.axis('off')
-print("Image Shearing:")
-plt.imshow(translated_image1)
-plt.imshow(translated_image2)
-plt.show()
-
-iv)Image Reflection
-
-import cv2
-import numpy as np
-import matplotlib.pyplot as plt
-input_image=cv2.imread('dip.jpg')
-input_image=cv2.cvtColor(input_image,cv2.COLOR_BGR2RGB)
-plt.axis('off')
-print("Input Image:")
-plt.imshow(input_image)
-plt.show()
-rows,cols,dim=input_image.shape
-M1=np.float32([[1,0,0],[0,-1,rows],[0,0,1]])
-M2=np.float32([[-1,0,cols],[0,1,0],[0,0,1]])
-translated_image1=cv2.warpPerspective(input_image,M1,(int(cols),int(rows)))
-translated_image2=cv2.warpPerspective(input_image,M2,(int(cols),int(rows)))
-plt.axis('off')
-print("Image Reflection:")
-plt.imshow(translated_image1)
-plt.imshow(translated_image2)
-plt.show()
-
-
-v)Image Rotation
-
-import cv2
-import numpy as np
-import matplotlib.pyplot as plt
-input_image=cv2.imread('dip.jpg')
-input_image=cv2.cvtColor(input_image,cv2.COLOR_BGR2RGB)
-plt.axis('off')
-print("Input Image:")
-plt.imshow(input_image)
-plt.show()
-rows,cols,dim=input_image.shape
-M1=np.float32([[1,0,0],[0,-1,rows],[0,0,1]])
-M2=np.float32([[-1,0,cols],[0,1,0],[0,0,1]])
-translated_image1=cv2.warpPerspective(input_image,M1,(int(cols),int(rows)))
-translated_image2=cv2.warpPerspective(input_image,M2,(int(cols),int(rows)))
-plt.axis('off')
-print("Image Reflection:")
-plt.imshow(translated_image1)
-plt.imshow(translated_image2)
-
-
-vi)Image Cropping
-
-import cv2
-import numpy as np
-import matplotlib.pyplot as plt
-input_image=cv2.imread('dip.jpg')
-input_image=cv2.cvtColor(input_image,cv2.COLOR_BGR2RGB)
-plt.axis('off')
-print("Input Image:")
-plt.imshow(input_image)
-plt.show()
-rows,cols,dim=input_image.shape
-angle=np.radians(10)
-M=np.float32([[np.cos(angle),-(np.sin(angle)),0],[np.sin(angle),np.cos(angle),0],[0,0,1]])
-translated_image=cv2.warpPerspective(input_image,M,(int(cols),int(rows)))
-plt.axis('off')
-print("Image Cropping:")
-plt.imshow(translated_image)
-plt.show()
-
-
+img = cv2.imread('cat.jpg',-1)
+original = cv2.cvtColor(img , cv2.COLOR_BGR2RGB)
+cv2.imshow('input',original)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+original.shape
+row, col, dim =original.shape
+```
+## ii)Image Translation
+```python
+translation = np.float32([[1,0,100],[0,1,150],[0,0,1]])
+translated_image = cv2.warpPerspective(original,translation,(col,row))
+cv2.imshow('translated_image',translated_image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+## iii)Image shearing
+```python
+shear_x = np.float32([[1,0.7,0],[0,1,0],[0,0,1]])
+shear_y = np.float32([[1,0,0],[0.3,1,0],[0,0,1]])
+sheared_x= cv2.warpPerspective(original,shear_x,(col,row))
+sheared_y = cv2.warpPerspective(original,shear_y,(col,row))
+cv2.imshow('shear_x',sheared_x)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+cv2.imshow('shear_y',sheared_y)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
 
 ```
+## iv)Image Reflection
+```python
+ref_x = np.float32([[1,0,0],[0,-1,row],[0,0,1]])
+ref_y = np.float32([[-1,0,col],[0,1,0],[0,0,1]])
+reflect_x= cv2.warpPerspective(original,ref_x,(col,row))
+reflect_y = cv2.warpPerspective(original,ref_y,(col,row))
+cv2.imshow('reflected_x',reflect_x)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+cv2.imshow('reflected_y',reflect_y)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+## v)Image Rotation
+```python
+angle = np.radians(15)
+mat_rotate = np.float32([[np.cos(angle),-
+(np.sin(angle)),0],[np.sin(angle),np.cos(angle),0],[0,0,1]])
+rotate_img =cv2.warpPerspective(original,mat_rotate,(col,row))
+cv2.imshow('rotated',rotate_img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+```
+## vi)Image Cropping
+```python
+cropped_img=img[10:500,25:600] 
+cv2.imshow('after_cropping',cropped_img);
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+```
+
+
 ## Output:
-### i)Image Translation
 
-![image](https://github.com/user-attachments/assets/b46d225d-9dc4-4a97-bd88-cab58c02e6b1)
-
-
-### ii) Image Scaling
-
-![image](https://github.com/user-attachments/assets/64083618-05bd-499b-9431-9a4213e526ec)
+  ### i)Original image
+  
+![Screenshot 2025-05-05 095551](https://github.com/user-attachments/assets/c528a6d2-6a4a-4688-9541-7710612a2a74)
 
 
+### ii)Image Translation
 
-### iii)Image shearing
+![image](https://github.com/user-attachments/assets/eea4fb52-3682-42d7-9e93-58f0fa1bdfcc)
 
-![image](https://github.com/user-attachments/assets/dbd040e2-99f7-4c7a-9552-3625ed81dba1)
+
+
+### iii) Image Scaling
+
+
+![image](https://github.com/user-attachments/assets/f84947cc-7ad5-47ba-8c0e-12d73656ea6b)
+
+
+
+### iv)Image shearing
+
+![image](https://github.com/user-attachments/assets/f584d754-2963-4e8d-9a7a-02fba539664d)
 
 
 
 ### iv)Image Reflection
 
-![image](https://github.com/user-attachments/assets/59791c08-1a4c-449c-a815-ea4a852d76ee)
 
+![image](https://github.com/user-attachments/assets/ba5de268-1a23-4c2c-a0ac-48c0e21f5657)
 
 
 
 ### v)Image Rotation
 
-![image](https://github.com/user-attachments/assets/410d13e9-33d9-47c7-9128-891e8ccc5612)
+![image](https://github.com/user-attachments/assets/15844e37-2238-4145-b06e-aa22fdd0e921)
 
 
 
 ### vi)Image Cropping
 
-![image](https://github.com/user-attachments/assets/cde23a10-7ea5-4846-93c1-1885980dca78)
+![image](https://github.com/user-attachments/assets/4092d42c-f226-4eef-83cc-f336e298bd1b)
 
 
 
